@@ -10,14 +10,50 @@
     <style>
         /* กำหนดสไตล์พื้นฐานสำหรับ body และ html */
         body, html {
-            font-family: Arial, sans-serif; /* กำหนดฟอนต์ */
-            background-color: #f4f4f9; /* กำหนดสีพื้นหลัง */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* กำหนดฟอนต์ */
+            background-color: #e9ecef; /* กำหนดสีพื้นหลัง */
             height: 100%; /* ให้หน้าเว็บเต็มความสูง */
             margin: 0; /* ลบ margin */
             padding: 0; /* ลบ padding */
             overflow-y: scroll; /* กำหนดให้มีสกอร์ล */
         }
 
+        /* สไตล์สำหรับส่วนข้อความวิ่ง */
+        .marquee-container {
+            width: 100%; /* กำหนดความกว้างของคอนเทนเนอร์ให้เต็มจอ */
+            overflow: hidden; /* ซ่อนส่วนที่เกิน */
+            white-space: nowrap; /* ไม่ให้ข้อความขึ้นบรรทัดใหม่ */
+            box-sizing: border-box; /* กำหนด box-sizing */
+        }
+
+        /* สไตล์สำหรับข้อความวิ่ง */
+        .marquee-text {
+            display: inline-block; /* แสดงเป็นบล็อกในบรรทัดเดียวกัน */
+            animation: marquee 15s linear infinite, color-change 3s infinite; /* เพิ่มแอนิเมชันให้ข้อความวิ่งและเปลี่ยนสี */
+            font-size: 24px; /* ขนาดตัวอักษร */
+            font-weight: bold; /* ทำให้ตัวอักษรหนา */
+        }
+
+        /* แอนิเมชันสำหรับข้อความวิ่ง */
+        @keyframes marquee {
+            0% {
+                transform: translateX(100%); /* เริ่มต้นที่ด้านขวาสุด */
+            }
+            100% {
+                transform: translateX(-100%); /* วิ่งไปจนสุดด้านซ้าย */
+            }
+        }
+
+        /* การเปลี่ยนสีของข้อความ */
+        @keyframes color-change {
+            0% { color: red; } /* สีแดง */
+            25% { color: blue; } /* สีน้ำเงิน */
+            50% { color: green; } /* สีเขียว */
+            75% { color: orange; } /* สีส้ม */
+            100% { color: purple; } /* สีม่วง */
+        }
+
+        /* กำหนดสไตล์สำหรับคอนเทนเนอร์หลัก */
         .container {
             width: 80%; /* กำหนดความกว้างของคอนเทนเนอร์ */
             max-width: 1200px; /* กำหนดความกว้างสูงสุด */
@@ -25,13 +61,26 @@
             padding: 20px; /* กำหนดระยะห่างภายใน */
         }
 
+        /* กำหนดสไตล์สำหรับหัวข้อหลัก */
+        .main-title {
+            font-size: 32px; /* ขนาดตัวอักษร */
+            font-weight: bold; /* ทำให้ตัวอักษรหนา */
+            color: #fff; /* กำหนดสีตัวอักษร */
+            margin-bottom: 30px; /* กำหนดระยะห่างด้านล่าง */
+            padding: 20px; /* กำหนดระยะห่างภายใน */
+            background-color: #007BFF; /* กำหนดสีพื้นหลังของหัวข้อ */
+            text-align: center; /* จัดตัวอักษรให้อยู่กลาง */
+            border-radius: 12px; /* มุมโค้ง */
+        }
+
+        /* กำหนดสไตล์สำหรับหัวข้อหมวดหมู่ */
         .category-title {
             font-size: 24px; /* ขนาดตัวอักษร */
             font-weight: bold; /* ทำให้ตัวอักษรหนา */
             color: #333; /* กำหนดสีตัวอักษร */
             margin-bottom: 20px; /* กำหนดระยะห่างด้านล่าง */
             padding: 10px; /* กำหนดระยะห่างภายใน */
-            background-color: #007BFF; /* กำหนดสีพื้นหลังของหัวข้อ */
+            background-color: #17a2b8; /* กำหนดสีพื้นหลังของหัวข้อ */
             color: white; /* สีตัวอักษร */
             text-align: center; /* จัดตัวอักษรให้อยู่กลาง */
             border-radius: 8px; /* มุมโค้ง */
@@ -42,12 +91,12 @@
         .button-container {
             display: grid; /* ใช้ grid layout */
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* กำหนดให้ปุ่มมีความกว้างขั้นต่ำ 150px */
-            gap: 10px; /* ระยะห่างระหว่างปุ่ม */
+            gap: 15px; /* ระยะห่างระหว่างปุ่ม */
             padding: 20px; /* ระยะห่างภายใน */
-            border-radius: 8px; /* มุมโค้ง */
+            border-radius: 12px; /* มุมโค้ง */
             background-color: #fff; /* กำหนดสีพื้นหลัง */
-            border: 2px solid #007BFF; /* กำหนดกรอบปุ่ม */
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
+            border: 2px solid #17a2b8; /* กำหนดกรอบปุ่ม */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
             margin-bottom: 30px; /* ระยะห่างด้านล่าง */
         }
 
@@ -70,7 +119,7 @@
         /* เมื่อชี้เมาส์ไปที่ปุ่ม */
         .button-container button:hover {
             transform: scale(1.1); /* ทำให้ปุ่มขยาย */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* เพิ่มเงา */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* เพิ่มเงา */
             background-color: #007BFF; /* เปลี่ยนพื้นหลัง */
         }
 
@@ -106,34 +155,36 @@
 
 <body>
 
+    <!-- คอนเทนเนอร์สำหรับข้อความวิ่ง -->
+    <div class="marquee-container">
+        <div class="marquee-text">ฟรีทีวี การ์ตูน กีฬา ความสนุกอีกมากมาย</div>
+    </div>
+
     <div class="container">
+        <!-- หัวข้อหลัก ฟรีทีวี -->
+        <div class="main-title">ฟรีทีวี</div>
+
         <!-- ส่วนหัวข้อ TV -->
         <div class="category-title">TV</div>
         <div class="button-container">
             <!-- ปุ่มแรกสำหรับการเปิดลิงก์ที่เกี่ยวข้องกับช่อง Cartoon Network -->
             <button id="first-button" onclick="openLink('intent://dookeela.live/live-tv/cartoon-network#Intent;package=com.wiseplay;S.referer=https://dookeela.live/&userAgent=exo_player;S.title=Cartoon%20Network;scheme=https;type=video/mp4;end')">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/NBT_Logo.png" alt="Cartoon Network"> <!-- รูปภาพของ Cartoon Network -->
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/NBT_Logo.png" alt="Cartoon Network">
             </button>
-
-            <!-- ปุ่มอื่นๆ ที่เชื่อมโยงกับลิงก์ต่างๆ -->
+            <!-- ปุ่มที่สองสำหรับช่อง NBT -->
             <button onclick="openLink('intent://dookeela.live/live-tv/cartoon-network#Intent;package=com.wiseplay;S.referer=https://dookeela.live/&userAgent=exo_player;S.title=Cartoon%20Network;scheme=https;type=video/mp4;end')">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/NBT_Logo.png" alt="NBT">
             </button>
-           <button id="first-button" onclick="openLink('intent://satellitesuntv1975.blogspot.com/2024/12/nhl-network.html#Intent;package=com.wiseplay;S.userAgent=exo_player;S.title=Live%20Program;S.referer=;scheme=https;type=video/mp4;end')">
-                <img src="https://dl.dropbox.com/s/i8bry7z3j9rjl5m/CH5-1.png" alt="Cartoon Network"> <!-- รูปภาพของ Cartoon Network -->
-<button onclick="openLink('intent://dookeela.live/live-tv/cartoon-network#Intent;package=com.wiseplay;S.referer=https://dookeela.live/&userAgent=exo_player;S.title=Cartoon%20Network;scheme=https;type=video/mp4;end')">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/NBT_Logo.png" alt="NBT">
-            </button>
-           <button id="first-button" onclick="openLink('intent://satellitesuntv1975.blogspot.com/2024/12/nhl-network.html#Intent;package=com.wiseplay;S.userAgent=exo_player;S.title=Live%20Program;S.referer=;scheme=https;type=video/mp4;end')">
-                <img src="https://dl.dropbox.com/s/i8bry7z3j9rjl5m/CH5-1.png" alt="Cartoon Network"> <!-- รูปภาพของ Cartoon Network -->
-
+            <!-- ปุ่มที่สามสำหรับ NHL Network -->
+            <button onclick="openLink('intent://satellitesuntv1975.blogspot.com/2024/12/nhl-network.html#Intent;package=com.wiseplay;S.userAgent=exo_player;S.title=Live%20Program;S.referer=;scheme=https;type=video/mp4;end')">
+                <img src="https://dl.dropbox.com/s/i8bry7z3j9rjl5m/CH5-1.png" alt="NHL Network">
             </button>
         </div>
 
         <!-- ส่วนหัวข้อ Sports -->
         <div class="category-title">Sports</div>
         <div class="button-container">
-            <!-- ปุ่มสำหรับช่อง Sport Channel -->
+            <!-- ปุ่มสำหรับ Sport Channel -->
             <button onclick="openLink('intent://dookeela.live/live-tv/sport-channel#Intent;package=com.wiseplay;S.referer=https://dookeela.live/&userAgent=exo_player;S.title=Sport%20Channel;scheme=https;type=video/mp4;end')">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/NBT_Logo.png" alt="Sport Channel">
             </button>
@@ -142,15 +193,7 @@
         <!-- ส่วนหัวข้อ Movies -->
         <div class="category-title">Movies</div>
         <div class="button-container">
-            <!-- ปุ่มสำหรับช่อง Fox Movies -->
-            <button onclick="openLink('intent://dookeela.live/live-tv/fox-movies#Intent;package=com.wiseplay;S.referer=https://dookeela.live/&userAgent=exo_player;S.title=Fox%20Movies;scheme=https;type=video/mp4;end')">
-                <img src="https://ais-s.ais-vidnt.com/ais/play/origin/LIVE/channelicon//0015_R.png" alt="Fox Movies">
-            </button>
-        </div>
-        <!-- ส่วนหัวข้อ Movies -->
-        <div class="category-title">Movies</div>
-        <div class="button-container">
-            <!-- ปุ่มสำหรับช่อง Fox Movies -->
+            <!-- ปุ่มสำหรับ Fox Movies -->
             <button onclick="openLink('intent://dookeela.live/live-tv/fox-movies#Intent;package=com.wiseplay;S.referer=https://dookeela.live/&userAgent=exo_player;S.title=Fox%20Movies;scheme=https;type=video/mp4;end')">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/NBT_Logo.png" alt="Fox Movies">
             </button>
@@ -158,14 +201,14 @@
     </div>
 
     <script>
-        /* ฟังก์ชันเพื่อเปิดลิงก์ */
+        /* ฟังก์ชันสำหรับการเปิดลิงก์ */
         function openLink(url) {
-            window.location.href = url; /* เปลี่ยนหน้าตามลิงก์ที่ได้รับ */
+            window.location.href = url;
         }
 
-        /* ให้โฟกัสที่ปุ่มแรกเมื่อโหลดหน้า */
+        /* เมื่อหน้าเว็บโหลดเสร็จ */
         window.onload = function() {
-            document.getElementById("first-button").focus(); /* ตั้งโฟกัสที่ปุ่มแรก */
+            document.getElementById("first-button").focus(); /* ให้ปุ่มแรกถูกเลือก */
         }
     </script>
 
