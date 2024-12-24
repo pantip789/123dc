@@ -9,7 +9,7 @@
     <style>
         body, html {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #e9ecef;
+            background-color: #f8f9fa;
             height: 100%;
             margin: 0;
             padding: 0;
@@ -21,6 +21,8 @@
             overflow: hidden;
             white-space: nowrap;
             box-sizing: border-box;
+            background-color: #e3f2fd;
+            padding: 10px 0;
         }
 
         .marquee-text {
@@ -28,6 +30,8 @@
             animation: marquee 15s linear infinite, color-change 3s infinite;
             font-size: 24px;
             font-weight: bold;
+            color: #007bff;
+            text-shadow: 2px 2px 4px #fff; /* ขอบตัวอักษรสีขาว */
         }
 
         @keyframes marquee {
@@ -55,20 +59,19 @@
         }
 
         .main-title {
-            font-size: 32px;
+            font-size: 36px;
             font-weight: bold;
             color: #fff;
             margin-bottom: 30px;
             padding: 20px;
-            background-color: #007BFF;
+            background-color: #007bff;
             text-align: center;
             border-radius: 12px;
         }
 
         .category-title {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: bold;
-            color: #333;
             margin-bottom: 20px;
             padding: 10px;
             background-color: #17a2b8;
@@ -80,7 +83,7 @@
 
         .button-container {
             display: grid;
-            grid-template-columns: repeat(6, 1fr); /* แสดง 6 ไอคอนในแต่ละแถว */
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
             gap: 15px;
             padding: 20px;
             border-radius: 12px;
@@ -92,7 +95,7 @@
 
         .button-container button {
             background-color: transparent;
-            border: 2px solid #007BFF;
+            border: 2px solid #007bff;
             padding: 15px;
             border-radius: 8px;
             cursor: pointer;
@@ -101,15 +104,16 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100px; /* ขนาดขั้นต่ำของปุ่ม */
-            max-height: 150px; /* ขนาดสูงสุดของปุ่ม */
+            min-height: 100px;
+            max-height: 150px;
             overflow: hidden;
         }
 
         .button-container button:hover {
             transform: scale(1.1);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            background-color: #007BFF;
+            background-color: #007bff;
+            color: #fff;
         }
 
         .button-container button:active {
@@ -119,21 +123,20 @@
         .button-container img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* ปรับขนาดภาพให้พอดีกับขนาดของปุ่ม */
+            object-fit: contain;
             object-position: center;
             border-radius: 8px;
         }
 
-        /* การปรับขนาดสำหรับมือถือหรือหน้าจอเล็ก */
         @media screen and (max-width: 768px) {
             .button-container {
-                grid-template-columns: repeat(3, 1fr); /* แสดง 3 ไอคอนในแต่ละแถว */
+                grid-template-columns: repeat(3, 1fr);
             }
         }
 
         @media screen and (max-width: 480px) {
             .button-container {
-                grid-template-columns: repeat(2, 1fr); /* แสดง 2 ไอคอนในแต่ละแถว */
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
@@ -142,7 +145,7 @@
         }
 
         .container::-webkit-scrollbar-thumb {
-            background-color: #007BFF;
+            background-color: #007bff;
             border-radius: 8px;
         }
 
@@ -175,7 +178,7 @@
             <button onclick="openLink('intent://satellitesuntv1975.blogspot.com/2024/12/nhl-network.html#Intent;package=com.wiseplay;S.userAgent=exo_player;S.title=Live%20Program;S.referer=;scheme=https;type=video/mp4;end')">
                 <img src="https://dl.dropbox.com/s/i8bry7z3j9rjl5m/CH5-1.png" alt="NHL Network">
             </button>
-  <button onclick="openLink('intent://satellitesuntv1975.blogspot.com/2024/12/nhl-network.html#Intent;package=com.wiseplay;S.userAgent=exo_player;S.title=Live%20Program;S.referer=;scheme=https;type=video/mp4;end')">
+            <button onclick="openLink('intent://satellitesuntv1975.blogspot.com/2024/12/nhl-network.html#Intent;package=com.wiseplay;S.userAgent=exo_player;S.title=Live%20Program;S.referer=;scheme=https;type=video/mp4;end')">
                 <img src="https://dl.dropbox.com/s/i8bry7z3j9rjl5m/CH5-1.png" alt="NHL Network">
             </button>
             <button onclick="openLink('intent://satellitesuntv1975.blogspot.com/2024/12/nhl-network.html#Intent;package=com.wiseplay;S.userAgent=exo_player;S.title=Live%20Program;S.referer=;scheme=https;type=video/mp4;end')">
