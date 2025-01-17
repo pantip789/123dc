@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.1, maximum-scale=10, user-scalable=yes">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <style>
-    /* ตั้งค่าสไตล์พื้นหลังและฟอนต์ของหน้าเว็บ */
     html, body {
         height: 100%;
         margin: 0;
@@ -17,79 +16,66 @@
         font-family: 'Arial', sans-serif;
     }
 
-    /* หัวเรื่องหลัก */
     h1 {
         font-size: 2.5rem;
         margin-top: 20px;
     }
 
-    /* เมนูหมวดหมู่ จัดเรียงแบบ flexbox ตรงกลาง และอนุญาตให้ไอคอนหมุนไปยังแถวถัดไป */
     #menu {
         display: flex;
         justify-content: center;
         gap: 15px;
-        margin: 0; /* เอาขอบออกเพื่อใช้พื้นที่เต็มที่ */
-        flex-wrap: wrap; /* เพิ่มให้หมวดหมู่เลื่อนไปในแถวใหม่เมื่อพื้นที่ไม่พอ */
-        overflow-x: auto; /* ให้เลื่อนได้หากเนื้อหาล้น */
-        padding: 0; /* เอาระยะห่างในตัวออก */
-        width: 100%; /* ให้เมนูใช้ความกว้างเต็มหน้าจอ */
+        margin: 0; 
+        flex-wrap: wrap;
+        overflow-x: auto;
+        padding: 0;
+        width: 100%;
     }
 
-    /* สไตล์ปุ่มไอคอนหมวดหมู่ */
     #menu img {
         height: 80px;
         width: 80px;
-        border-radius: 50%; /* ทำให้ภาพกลม */
+        border-radius: 50%; 
         border: 3px solid #87CEFA;
         padding: 5px;
         cursor: pointer;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-        max-width: 100%; /* ปรับขนาดไม่ให้เกินขนาดที่ตั้งไว้ */
-        max-height: 100%; /* ปรับขนาดไม่ให้เกินขนาดที่ตั้งไว้ */
     }
 
-    /* เอฟเฟกต์เมื่อเอาเมาส์ไปวางบนปุ่ม */
     #menu img:hover {
         transform: scale(1.1);
         box-shadow: 0 0 15px #87CEFA;
     }
 
-    /* สไตล์กรอบหมวดหมู่ */
     .category {
-        display: none; /* ซ่อนหมวดหมู่อื่น ๆ ไว้ก่อน */
-        padding: 20px;
-        margin: 0 auto;
-        max-width: 100%; /* ปรับให้เต็มพื้นที่ */
-        background-color: transparent; /* ลบกรอบนอกออก */
+        display: none; 
+        padding: 0px;  /* ลด padding ให้แคบลง */
+        margin: 0px auto; /* ลดระยะห่างให้น้อยที่สุด */
+        max-width: 100%;
+        background-color: transparent;
     }
 
-    /* หัวข้อหมวดหมู่ */
     h2 {
         color: #87CEFA;
         font-size: 2rem;
     }
 
-    /* สไตล์ของภาพช่องรายการ (แก้ไขใหม่ให้ขนาดภาพเท่ากัน) */
     img.channel {
-        border-radius: 15px; /* มุมโค้งมน */
-        border: 3px solid #87CEFA; /* ขอบสีน้ำเงินอ่อน */
+        border-radius: 15px;
+        border: 3px solid #87CEFA;
         padding: 2px;
         margin: 3px;
-        height: 80px;      /* กำหนดความสูงคงที่ */
-        width: 80px;       /* กำหนดความกว้างคงที่ */
-        object-fit: cover; /* ครอบภาพให้พอดีขนาด */
+        height: 80px;
+        width: 80px;
+        object-fit: cover;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-        max-width: 100%; /* ปรับขนาดไม่ให้เกินขนาดที่ตั้งไว้ */
-        max-height: 100%; /* ปรับขนาดไม่ให้เกินขนาดที่ตั้งไว้ */
     }
 
-    /* เอฟเฟกต์เมื่อเอาเมาส์ไปวางบนภาพช่องรายการ */
     img.channel:hover {
         transform: scale(1.1);
         box-shadow: 0 0 15px #87CEFA;
     }
 
-    /* สไตล์ข้อความใต้รูปหมวดหมู่ */
     #menu p {
         font-size: 1rem;
         color: #87CEFA;
@@ -98,18 +84,18 @@
 
     </style>
     <script>
-        // ฟังก์ชันสำหรับแสดงหมวดหมู่ (ซ่อนหมวดหมู่อื่นเมื่อเลือก)
         function showCategory(categoryId) {
             document.querySelectorAll('.category').forEach(function(cat) {
-                cat.style.display = 'none'; // ซ่อนทุกหมวดหมู่
+                cat.style.display = 'none';
             });
-            document.getElementById(categoryId).style.display = 'block'; // แสดงเฉพาะหมวดหมู่ที่เลือก
+            document.getElementById(categoryId).style.display = 'block';
         }
 
-        // ฟังก์ชันแสดงทุกหมวดหมู่
         function showAllCategories() {
             document.querySelectorAll('.category').forEach(function(cat) {
-                cat.style.display = 'block'; // แสดงทุกหมวดหมู่
+                cat.style.display = 'block';
+                cat.style.marginBottom = '-10px'; // ปรับให้ระยะห่างระหว่างหมวดหมู่แคบลง
+                cat.style.padding = '-10px';       // ลด padding ให้แคบลง
             });
         }
     </script>
@@ -117,11 +103,11 @@
 <body>
     <h1>ALLTV</h1>
     
-    <!-- เมนูหมวดหมู่ -->
     <div id="menu">
-        <!-- ไอคอนหมวดหมู่ต่าง ๆ -->
         <div>
-            <img src="https://e7.pngegg.com/pngimages/605/905/png-clipart-free-pic-web-design-label-thumbnail.png" alt="กีฬา" onclick="showCategory('sports')" title="กีฬา">
+            
+        
+<img src="https://e7.pngegg.com/pngimages/605/905/png-clipart-free-pic-web-design-label-thumbnail.png" alt="FEER TV"onclick="showCategory('sports')" title="FEER TV">
             <p>FEER TV</p>
         </div>
         <div>
@@ -149,7 +135,7 @@
 
     <!-- หมวดหมู่ กีฬา -->
     <div id="sports" class="category">
-        <h2>กีฬา</h2>
+        <h2>"FEER TV"</h2>
                 <a href="intent://goal-th.com/ช่องรายการทีวี/?id=406#Intent;package=com.wiseplay;S.title=กีฬา;scheme=https;type=video/mp4;end">
             <img class="channel" src="https://cms.dmpcdn.com/livetv/2023/04/28/456c5d00-e599-11ed-b550-9935ba8025b9_webp_original.webp">
         </a>
