@@ -6,14 +6,13 @@
   <title>ช่องทีวีออนไลน์</title>
   <style>
     :root {
-  --primary-color: #2196F3; /* ฟ้าสดใส (Blue 500) */
-  --secondary-color: #64B5F6; /* ฟ้าอ่อน (Light Blue 300) */
-  --dark-bg: #111;
-  --channel-bg: #222;
-  --text-color: #fff;
-  --channel-size: 80px;
-}
-
+      --primary-color: #2196F3;
+      --secondary-color: #64B5F6;
+      --dark-bg: #111;
+      --channel-bg: #222;
+      --text-color: #fff;
+      --channel-size: 80px;
+    }
 
     * {
       box-sizing: border-box;
@@ -280,7 +279,7 @@
     </div>
   </div>
 
-  <footer>© 2025 ช่องทีวีออนไลน์ | </footer>
+  <footer>© 2025 ช่องทีวีออนไลน์ | พัฒนาโดย </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <script>
@@ -296,8 +295,11 @@
       const cancelBtn = document.getElementById('cancelBtn');
       const confirmBtn = document.getElementById('confirmBtn');
 
+      // ✅ เพิ่มตัวแปรเพื่อจำหมวดหมู่ก่อนเปิดวิดีโอ
+      let lastCategory = 'all';
+
       let channels = [
-                {
+{
                     "name": "NBT",
                     "logo": "https://media-mvtv.imgix.net/channel/115_y_fFG0J46IoYNzUjVKatsbL7vZByxiMqTm.png",
                     "src": "https://lb1-live-mv.v2h-cdn.com/hls/fffe/nbt/nbt.m3u8",
@@ -766,6 +768,10 @@
       }
 
       function playChannel(src) {
+        // ✅ จดจำหมวดหมู่ล่าสุดก่อนเล่นวิดีโอ
+        const activeCategory = categories.querySelector('.category.active');
+        lastCategory = activeCategory ? activeCategory.dataset.category : 'all';
+
         videoContainer.classList.add('active');
         loadingSpinner.style.display = 'block';
         videoPlayer.src = '';
@@ -789,10 +795,12 @@
         videoPlayer.removeAttribute('src');
         videoPlayer.load();
         videoContainer.classList.remove('active');
+
+        // ✅ ใช้หมวดหมู่ล่าสุดแทนที่จะกลับไป all
         categories.querySelectorAll('.category').forEach(c => c.classList.remove('active'));
-        const allCategory = categories.querySelector('[data-category="all"]');
-        if (allCategory) allCategory.classList.add('active');
-        renderChannels('all');
+        const currentCategory = categories.querySelector(`[data-category="${lastCategory}"]`);
+        if (currentCategory) currentCategory.classList.add('active');
+        renderChannels(lastCategory);
       };
 
       categories.querySelectorAll('.category').forEach(cat => {
@@ -822,7 +830,7 @@
 
       renderChannels();
 
-      // ✅ ดักปุ่ม Back ของอุปกรณ์ให้กลับมาหน้าหลัก
+      // ✅ ดักปุ่ม Back ของอุปกรณ์ให้กลับไปหมวดหมู่ล่าสุด
       window.addEventListener('popstate', () => {
         if (videoContainer.classList.contains('active')) {
           backBtn.click();
